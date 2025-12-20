@@ -1,0 +1,57 @@
+#root {
+  font-size: 16px;
+  font-family: "Barlow", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.home-header {
+  background-image: url("../images/iteration-1-images/home-banner.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 1080px;
+}
+
+.banner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-container p {
+  color: #fdc913;
+  font-family: Satisfy;
+  font-size: 2rem;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.text-container h1 {
+  color: white;
+  font-family: "Roboto Condensed";
+  font-size: 5.5rem;
+  font-weight: 300;
+  text-align: center;
+  line-height: 6rem;
+  padding: 0;
+  margin: 0;
+}
+
+.logo-item {
+  padding: 3rem;
+}
+
+#btn {
+  background-color: #fdc913;
+  padding: 1rem 4rem;
+  color: #292929;
+  font-family: "Roboto Condensed";
+  margin: 1rem 0.7rem;
+  border-radius: 10rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-decoration: none;
+}
