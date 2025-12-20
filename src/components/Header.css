@@ -40,3 +40,9 @@
 .separator{
     color: white;
 }
+
+@media (max-width: 500px){
+  .link-container{
+    margin-left: 3rem;
+  }
+}

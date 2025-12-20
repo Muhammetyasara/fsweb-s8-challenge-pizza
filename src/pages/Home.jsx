@@ -10,7 +10,6 @@ export default function Home() {
           <img src={logo} alt="logo" className="logo-item" />
 
           <span className="text-container">
-            <p>fırsatı kaçırma</p>
             <h1>
               KOD ACIKTIRIR
               <br />
