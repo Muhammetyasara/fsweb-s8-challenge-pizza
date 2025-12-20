@@ -1,0 +1,42 @@
+.header {
+  background-color: #ce2829;
+  height: 207px;
+}
+
+.header-container {
+  max-width: 532px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container img {
+  height: 46px;
+}
+
+.link-container {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  opacity: 0.7;
+  font-size: 16x;
+}
+
+.nav-link.active {
+  opacity: 1;
+}
+
+
+.separator{
+    color: white;
+}
