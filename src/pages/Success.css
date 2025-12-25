@@ -5,13 +5,14 @@
   justify-content: center;
   height: 100vh;
   background-color: #ce2829;
-  gap: 266px;
+  margin: 0;
+  padding: 0;
 }
 
 #logo-item {
   width: 361px;
   height: 45px;
-  padding-top: 149px;
+  flex: 1;
 }
 
 .success-h1 {
@@ -24,9 +25,84 @@
   flex: 1;
 }
 
+.success-border {
+  border: 1px solid #d9d9d9;
+  width: 750px;
+  margin-bottom: 50px;
+}
+
+.summary-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  flex: 1;
+  color: white;
+  background-color: #ce2829;
+  margin-bottom: 50px;
+  border: none;
+}
+
+.summary-info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  max-width: 280px;
+}
+
+.pizza-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.summary-info-group p {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+.extras {
+  display: flex;
+}
+
+.extras-title {
+  font-weight: bold;
+  flex: 0.8;
+}
+.extras-text {
+  flex: 1.2;
+}
+.summary-price-group {
+  width: 360px;
+  padding: 28px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+}
+
+.summary-price-group h3 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.price-row.total {
+  font-weight: 600;
+}
+
 @media (max-width: 500px) {
   .success-container {
-    gap: 200px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 
   #logo-item {
@@ -37,5 +113,14 @@
   .success-h1 {
     font-size: 72px;
     line-height: 92px;
+  }
+
+  .summary-success {
+    margin-bottom: 10rem;
+    width: 50%;
+  }
+
+  .success-border {
+    width: 70%;
   }
 }

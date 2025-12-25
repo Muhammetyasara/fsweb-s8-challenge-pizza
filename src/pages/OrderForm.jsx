@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import "./OrderForm.css";
 
 const INGREDIENTS = [
@@ -23,7 +25,7 @@ const INGREDIENTS = [
 const BASE_PRICE = 85.5;
 const INGREDIENT_PRICE = 5;
 
-export default function OrderForm() {
+export default function OrderForm({ setOrderData }) {
   const [formData, setFormData] = useState({
     name: "",
     size: "",
@@ -31,6 +33,8 @@ export default function OrderForm() {
     ingredients: [],
     note: "",
   });
+
+   const history = useHistory();
 
   const [isValid, setIsValid] = useState(false);
 
@@ -63,15 +67,28 @@ export default function OrderForm() {
   const totalPrice = BASE_PRICE + ingredientsPrice;
 
   function handleSubmit(e) {
-    e.preventDefault();
-    if (!isValid) return;
+  e.preventDefault();
+  if (!isValid) return;
 
-    axios.post(
-      "https://reqres.in/api/pizza",
-      { ...formData, totalPrice },
-      { headers: { "x-api-key": "reqres-free-v1" } }
-    );
-  }
+  const liftedOrderData = {
+    size: formData.size,
+    dough: formData.dough,
+    ingredients: formData.ingredients,
+    ingredientsPrice,
+    totalPrice,
+    note:formData.note
+  };
+
+  setOrderData(liftedOrderData);
+
+  axios.post(
+    "https://reqres.in/api/pizza",
+    { ...formData, totalPrice },
+    { headers: { "x-api-key": "reqres-free-v1" } }
+  ).then(() => {
+    history.push("/success");
+  });
+}
 
   return (
     <>
@@ -108,33 +125,32 @@ export default function OrderForm() {
                   <h3>
                     Boyut Seç <span style={{ color: "#CE2829" }}>*</span>
                   </h3>
-                  <label>
-                    <input
-                      type="radio"
-                      name="size"
-                      value="small"
-                      onChange={handleChange}
-                    />
-                    Küçük
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="size"
-                      value="medium"
-                      onChange={handleChange}
-                    />
-                    Orta
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="size"
-                      value="large"
-                      onChange={handleChange}
-                    />
-                    Büyük
-                  </label>
+                  <div className="label-container">
+                    <label>
+                      <input
+                        type="radio"
+                        name="size"
+                        value="S"
+                        onChange={handleChange}
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="size"
+                        value="M"
+                        onChange={handleChange}
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="size"
+                        value="L"
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </div>
                 </section>
 
                 <section className="dough-selection">
@@ -147,10 +163,10 @@ export default function OrderForm() {
                     onChange={handleChange}
                   >
                     <option value="" disabled>
-                      Hamur Kalınlığı
+                      -Hamur Kalınlığı Seç-
                     </option>
-                    <option value="thin">İnce</option>
-                    <option value="thick">Kalın</option>
+                    <option value="İnce">İnce</option>
+                    <option value="Kalın">Kalın</option>
                   </select>
                 </section>
               </section>
@@ -166,7 +182,7 @@ export default function OrderForm() {
                 </div>
                 <div className="ingredients">
                   {INGREDIENTS.map((item) => (
-                    <label key={item}>
+                    <label key={item} className="ingredient-item">
                       <input
                         type="checkbox"
                         value={item}
@@ -177,6 +193,7 @@ export default function OrderForm() {
                           formData.ingredients.length >= 10
                         }
                       />
+                      <span className="custom-checkbox"></span>
                       {item}
                     </label>
                   ))}
@@ -238,7 +255,9 @@ export default function OrderForm() {
             </aside>
           </form>
         </div>
+        
       </main>
+      <Footer className="footer" />
     </>
   );
 }

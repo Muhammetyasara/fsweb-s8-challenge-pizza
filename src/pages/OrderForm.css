@@ -13,7 +13,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 64px;
 }
 
 .order-container {
@@ -80,12 +79,57 @@ body {
   gap: 20px;
 }
 
-.size-selection label {
-  color: #5f5f5f;
+.label-container {
+  display: flex;
+  gap: 16px;
 }
 
-.size-selection label input {
-  margin: 0 15px 0 0;
+.size-selection label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.size-selection input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #faf7f2;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.size-selection input[type="radio"]::after {
+  content: attr(value);
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #333;
+}
+
+.size-selection input[type="radio"]:hover {
+  background-color: #ffeecc;
+}
+
+.size-selection input[type="radio"]:checked {
+  background-color: #ffeecc;
+}
+
+.size-selection input[type="radio"]:focus-visible {
+  outline: 2px solid #ce2829;
+  outline-offset: 2px;
 }
 
 .size-selection h3,
@@ -100,8 +144,14 @@ body {
 }
 
 .dough-selection select {
-  height: 38x;
-  width: 132px;
+  height: 56px;
+  width: 258px;
+  background-color: #faf7f2;
+}
+
+.dough-selection select option {
+  color: #5f5f5f;
+  margin: 50px;
 }
 
 .ingredients-selection {
@@ -121,21 +171,62 @@ body {
   width: 524px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
   gap: 10px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.ingredients label {
+.ingredient-item input {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 45px;
+  height: 45px;
+  border-radius: 6px;
+  background-color: #FAF7F2;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.ingredient-item input:checked + .custom-checkbox {
+  background-color: #FDC913; 
+  border-color: #FDC913;
+}
+
+.ingredient-item input:checked + .custom-checkbox::after {
+  content: "✓";
+  position: absolute;
+  color: #000;
+  font-size: 24px;
   font-weight: bold;
+  left: 13px;
+  bottom: 10px;
 }
 
-.ingredients label input {
-  margin: 0 11px 0 0;
+.ingredient-item input:disabled + .custom-checkbox {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .customer-info {
   width: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.customer-info input{
+  background-color: #FAF7F2;
+}
+
+.note-section textarea{
+  background-color: #FAF7F2;
 }
 
 .customer-info h2,
@@ -214,6 +305,7 @@ body {
   border: 1px solid #d9d9d9;
   border-radius: 8px;
   padding-bottom: 40px;
+  background-color: #FAF7F2;
 }
 
 .summary h3 {
@@ -311,6 +403,7 @@ button:disabled {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+
   }
 
   .summary h3 {
@@ -325,5 +418,11 @@ button:disabled {
   button {
     height: 56px;
     font-size: 1rem;
+  }
+
+  .footer{
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 }
